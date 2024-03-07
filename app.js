@@ -20,6 +20,7 @@ app.post("/hook", (req, res, next) => {
   } else {
     console.log("VALID SIGNATURE")
     console.log(req.body["data"]["amount"]["value"])
+  }
 
   res.status(200).send("OK")
 })
