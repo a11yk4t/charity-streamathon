@@ -10,7 +10,7 @@ app.post("/hook", (req, res, next) => {
   console.log(webhookUrl)
 
   res.status(200).send("OK")
-}
+})
 
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
