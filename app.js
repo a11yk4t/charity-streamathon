@@ -1,19 +1,9 @@
 const express = require('express')
+const crypto = require("crypto")
 const app = express()
 const port = process.env.PORT || 3001
 const secret = process.env.SECRET
 
-import * as crypto from 'node:crypto'
-
-/**
- * Verifies a Tiltify Webhook Signature is valid
- *
- * @param {string} secret
- * @param {string} signature
- * @param {string} timestamp
- * @param {string} body
- * @returns {boolean}
- */
 const verifySignature = (secret, signature, timestamp, body) => {
   const hmac = crypto.createHmac('sha256', secret)
   hmac.update(`${timestamp}.${body}`)
