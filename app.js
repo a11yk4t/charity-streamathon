@@ -15,7 +15,8 @@ app.get("/", (req, res) => {
 })
 
 app.post("/hook", (req, res, next) => {
-  console.log(req.headers["X-Tiltify-Signature"])
+  console.log(req.get("X-Tiltify-Signature"))
+  console.log(req)
   // if (verifySignature(secret, req.get("X-Tiltify-Signature"), req.get("X-Tiltify-Timestamp"), req.body)) {
   //   console.log("INVALID SIGNATURE")
   // } else {
