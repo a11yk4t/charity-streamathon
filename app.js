@@ -15,14 +15,14 @@ app.get("/", (req, res) => {
 })
 
 app.post("/hook", (req, res, next) => {
-  console.log(req.get("X-Tiltify-Signature"))
-  console.log(req)
-  // if (verifySignature(secret, req.get("X-Tiltify-Signature"), req.get("X-Tiltify-Timestamp"), req.body)) {
-  //   console.log("INVALID SIGNATURE")
-  // } else {
-  //   console.log("VALID SIGNATURE")
-  //   console.log(req.body["data"]["amount"]["value"])
-  // }
+  var signature = req.get("X-Tiltify-Signature")
+  var timestamp = req.get("X-Tiltify-Timestamp")
+  if (verifySignature(secret, signature, timestamp, req.body)) {
+    console.log("INVALID SIGNATURE")
+  } else {
+    console.log("VALID SIGNATURE")
+    console.log(req.body["data"]["amount"]["value"])
+  }
 
   res.status(200).send("OK")
 })
