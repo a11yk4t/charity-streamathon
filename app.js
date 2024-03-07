@@ -10,6 +10,8 @@ const verifySignature = (secret, signature, timestamp, body) => {
   return signature === hmac.digest('base64')
 }
 
+app.use(express.json())
+
 app.get("/", (req, res) => {
   res.send("hello world")
 })
